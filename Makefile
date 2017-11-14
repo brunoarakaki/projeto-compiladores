@@ -10,9 +10,8 @@ CFLAGS  = -g -Wall
 # the build target executable:
 TARGET = main
 
-all: $(TARGET)
-$(TARGET): $(TARGET).c
-	$(CC) $(CFLAGS) -o $(TARGET) $(TARGET).c
+all:
+	$(CC) $(CFLAGS) analisador_lexico.c analisador_sintatico.c main.c -o $(TARGET)
 
 clean:
 	$(RM) $(TARGET)

@@ -1,3 +1,9 @@
-for (int abc = 0; abc < 0; abc = abc + 1) {
-  if (abc == 6) return;
+prog {
+	int a;
+	enquanto (a <= 5) {
+	  a = a + 1;
+	}
+	se (a == 6) {
+		retorna;
+	}
 }
