@@ -1,28 +1,23 @@
 programa = "prog" "{" declaracoes comandos "}" [{funcao}] .
 declaracoes = declaracao {declaracao} .
 declaracao = tipo identificador ";" .
-comandos = atribuicao | condicao | iteracao | chamadafuncao | entrada | saida .
+comandos = comando {comando} .
+comando = atribuicao | condicao | iteracao | chamadafuncao | entrada | saida | retorno .
 tipo = "int" | "char" | "string" | "float" | "bool" .
-identificador = letra {caractere} .
-letra = "a" | "b" | "c" | "z" | "A" | "B" | "Z" .
-numero = ["-"]digito {digito} .
-digito = "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" .
-caractere = letra | digito .
 atribuicao = identificador "=" expressao ";" .
-expressao = numero | "'"caractere"'" | exparitmetica | """expstring""" | expbool .
-exparitmetica = numero operadorarit numero {operadorarit numero} .
+operando = numero | identificador .
+expressao = exparitmetica | caractere | string | expbool .
+exparitmetica = operando [{operadorarit operando}] .
 operadorarit = "+" | "-" | "*" | "/" .
 operadorlogico = "==" | "<=" | ">=" | "<" | ">" | "!=" .
-expstring = caractere {caractere} .
 expbool = "verdadeiro" | "falso" .
 condicao = "se" "("expressaocond")" "{"comandos"}" ["senao" "{"comandos"}"] .
 expressaocond = expressao operadorlogico expressao {operadorcond expressao operadorlogico expressao} .
 operadorcond = "&&" | "||" .
 iteracao = "enquanto" "("expressaocond")" "{"comandos"}" .
-chamadafuncao = identificador"(" argumentos ")" ";" .
-funcao = tipo "funcao" identificador "(" parametros ")" "{"comandos retorno"}" .
-parametros = tipo identificador {"," tipo identificador} .
-argumentos = identificador { "," identificador} .
-retorno = "retorno" identificador ";" .
+chamadafuncao = identificador "(" [identificador {"," identificador}] ")" ";" .
+funcao = tipo "funcao" identificador "("argumentos")" "{"comandos retorno"}" .
+argumentos = tipo identificador {"," tipo identificador} .
+retorno = "retorno" [identificador] ";" .
 entrada = "entrada" identificador ";" .
 saida = "saida" identificador ";" .
