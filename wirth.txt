@@ -6,6 +6,10 @@ tipo = "int" | "char" | "string" | "float" | "bool" .
 identificador = letra {caractere} .
 letra = "a" | "b" | "c" | "z" | "A" | "B" | "Z" .
 numero = ["-"]digito {digito} .
+<<<<<<< HEAD
+=======
+decimal = numero "." digito {digito} .
+>>>>>>> c62c4baf00ab6f625aad91773b3b7978e7fa08f5
 digito = "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" .
 caractere = letra | digito .
 atribuicao = identificador "=" expressao ";" .
